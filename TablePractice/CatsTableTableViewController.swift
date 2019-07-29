@@ -8,26 +8,44 @@
 
 import UIKit
 
-class CatsTableTableViewController: UITableViewController {
+struct Cats
+{
+    var id : Int
+    var title : String
+    var text : String
+    //var image : String
+}
 
+class StoriesTableViewController: UITableViewController
+{
+    // the rest of your code
+}
+
+
+class CatsTableTableViewController: UITableViewController
+{
+    var allCats =
+        [ Cats(id: 1, title: "Persian Cat", text: "Fluffy but loves to party"),
+        Cats(id: 2, title: "British Shorthair",text: "She likes cookies"),
+        Cats(id:3, title: "Maine Coon", text: "Thicccc") ]
    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return allCats.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
-        cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
+        cell.textLabel?.text = allCats[indexPath.row].title
 
         return cell
     }
