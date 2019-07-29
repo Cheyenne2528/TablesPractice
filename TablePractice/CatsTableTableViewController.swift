@@ -13,7 +13,7 @@ struct Cats
     var id : Int
     var title : String
     var text : String
-    //var image : String
+    var image : String
 }
 
 class StoriesTableViewController: UITableViewController
@@ -25,9 +25,9 @@ class StoriesTableViewController: UITableViewController
 class CatsTableTableViewController: UITableViewController
 {
     var allCats =
-        [ Cats(id: 1, title: "Persian Cat", text: "Fluffy but loves to party"),
-        Cats(id: 2, title: "British Shorthair",text: "She likes cookies"),
-        Cats(id:3, title: "Maine Coon", text: "Thicccc") ]
+        [ Cats(id: 1, title: "Persian Cat", text: "Fluffy but loves to party", image: "PersianCat"),
+        Cats(id: 2, title: "British Shorthair",text: "She likes cookies", image: "BritishShorthair"),
+        Cats(id:3, title: "Maine Coon", text: "Thicccc", image: "MaineCoon") ]
    
     // MARK: - Table view data source
 
@@ -46,6 +46,10 @@ class CatsTableTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
         cell.textLabel?.text = allCats[indexPath.row].title
+        cell.detailTextLabel?.text = allCats[indexPath.row].text
+
+        cell.imageView?.image = UIImage(named:allCats[indexPath.row].image)
+        
 
         return cell
     }
